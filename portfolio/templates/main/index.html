@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main/index.css') }}">
+
+{% endblock %}
+
+{% block title%} Home {% endblock%}
+
+{% block content%}
+
+
+<section id="about">
+	<div class="intro-cont">
+		<div class="intro-details">
+			<h1 id="name">Hi, I'm Akinniyi Ogundare</h1>
+			<h1 id="career">Hi, I'm a Software Engineer</h1>
+			<p>My journey in software engineering began with a fascination for how things work and a desire to create solutions that make a difference. Over the years </p>
+	
+			<div class="cv-cont">
+				<a href="#projects"><button type="button" class="btn btn-outline-light">My Projects</button></a>
+				<a href="{{ url_for('static', filename='/docs/ogundare_akinniyi_cv.pdf') }}" target="_blank"><button type="button" class="btn btn-outline-light">Download CV</button></a>
+			</div>	
+		</div>
+		<img src="{{ url_for('static', filename='/images/akin.png') }}" alt="" class="intro-img">
+	</div>
+
+	<div class="aboutme-cont">
+		<img src="{{ url_for('static', filename='/images/ai_keyboard.jpg') }}" alt="" class="aboutme-img">
+		<div class="aboutme-details">
+			<h2>About Me</h2>
+			<p>I’m always eager to explore new opportunities and take on exciting challenges. If you’re looking for a software engineer who is passionate about technology and driven to deliver outstanding results, let’s connect! Feel free to browse through my portfolio to see some of the projects I’ve worked on and get in touch if you’d like to discuss how we can work together.</p>
+			<div class="edu-btns">
+				<button type="button" class="btn btn-outline-light actives" id="skills">Skills</button>
+				<button type="button" class="btn btn-outline-light education" id="edu">Education</button>
+				<button type="button" class="btn btn-outline-light certification" id="cert">Certification</button>
+			</div>
+			
+			<div class="skills-cont" id="skill-content">
+				<ul>
+					<li class="skills-title">Programming Languages:</li> 
+					<div class="skills">
+						<p>Python</p>
+						<p>|</p>
+						<p>JavaScript</p>
+						<p>|</p>
+						<p>SQL</p>
+						<p>|</p>
+						<p>C</p>
+						<p>|</p>
+						<p>HTML/CSS</p>
+					</div>
+					
+					<li class="skills-title">Web Development:</li>
+					<div class="skills">
+						<p>Flask</p>
+					</div>
+					<li class="skills-title">Database Management:</li>
+					<div class="skills">
+						<p>MySQL</p>
+						<p>|</p>
+						<p>MongoDB</p>
+					</div>
+					<li class="skills-title">Frameworks and Libraries:</li>
+					<div class="skills">
+						<p>jQuery</p>
+						<p>|</p>
+						<p>Bootstrap</p>
+					</div>
+					<li class="skills-title">DevOps and Cloud:</li>
+					<div class="skills">
+						<p>Docker</p>
+						<p>|</p>
+						<p>CI/CD</p>
+						<p>|</p>
+						<P>Ansible</P>
+
+					</div>
+					<li class="skills-title">Version Control:</li>
+					<div class="skills">
+						<p>Git</p>
+						<p>|</p>
+						<p>GitHub</p>
+					</div>
+					
+				</ul>
+
+				<!--
+				<ul>
+					<li>Communication:> Excellent verbal and written communication skills</li>
+					<li>Teamwork:> Proven ability to work effectively in a team setting</li>
+					<li>Problem-Solving:> Strong analytical and critical thinking abilities</li>
+					<li>Project Management:> Skilled in time management and task prioritization</li>
+					<li>Adaptability:> Quick learner with the ability to adapt to new technologies</li>
+				</ul>
+				-->
+				
+			</div>
+
+			<div class="edu" id="edu-content">
+				<ul>
+					<li>BTECH Electronics and Electrical Engineering</li>
+				</ul>
+				
+			</div>
+
+			<div class="cert" id="cert-content">
+				<ul>
+					<li>Google IT Support Professional Certificate</li>
+					<li>ALX Software Engineering Certification</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="projects">
+	<div class="project-cont">
+		<div class="myprojects">
+			<h2>My Projects</h2>
+			<div class="edu-btns">
+				<a href="#projects"><button type="button" class="btn btn-outline-light ">All Projects</button></a>
+				<a href="#projects"><button type="button" class="btn btn-outline-light ">Live Projects</button></a>
+				<a href="#projects"><button type="button" class="btn btn-outline-light education">CLI Projects</button></a>
+				<a href="#projects"><button type="button" class="btn btn-outline-light certification">Web Projects</button></a>
+			</div>
+			<div class="project-cards">
+				<div class="row row-cols-1 row-cols-md-3 g-4">
+					<div class="col">
+						<div class="card h-100">
+							<img src="{{ url_for('static', filename='/images/craftdot.jpg') }}" alt="" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title card-h5">Craftdot</h5>
+								<p class="card-text card-p">This is a web service that connect artisans to with diverse services to users based on location, preference and skill type.</p>
+								<div class="card-btn"><a href="https://craftdot.com.ng" target="_blank"><button type="button" class="btn btn-dark">Visit craftdot</button></a></div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<img src="{{ url_for('static', filename='/images/craftdot.jpg') }}" alt="" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title card-h5">Craftdot</h5>
+								<p class="card-text card-p">This is a web service that connect artisans to with diverse services to users based on location, preference and skill type.</p>
+								<div class="card-btn"><a href="https://craftdot.com.ng" target="_blank"><button type="button" class="btn btn-dark">Visit craftdot</button></a></div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<img src="{{ url_for('static', filename='/images/craftdot.jpg') }}" alt="" class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title card-h5">Craftdot</h5>
+								<p class="card-text card-p">This is a web service that connect artisans to with diverse services to users based on location, preference and skill type.</p>
+								<div class="card-btn"><a href="https://craftdot.com.ng" target="_blank"><button type="button" class="btn btn-dark">Visit craftdot</button></a></div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="contact">
+	<div class="contact-cont">
+		<div class="contact-text">
+			<h4>Let us meet</h4>
+			<p>I'd love to hear from you! Whether you have a project in mind, a question, or just want to say hello, feel free to get in touch via my email <a href="mailto:contact@ogundareakinniyi.com">contact@ogundareakinniyi.com</a> or fill out the inquiiry form.</p>
+			<p>Connect with me on social media:</p>
+			<div class="contact-icons">
+				<a href="https://x.com/techy_tailor" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+				<a href="https://www.linkedin.com/in/akinniyi-ogundare-b3a088271" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+				<a href="https://github.com/tech-tailor" target="_blank"><i class="fa-brands fa-github"></i></a>
+			</div>
+			<p>Available for: Freelance projects, Part-time positions, Remote offers, Coffee chats</p>
+			<p>Thank you for visiting my portfolio. I look forward to connecting with you!</p>			
+		</div>
+
+
+		<form action="" method="post">
+			<div class="mb-3">
+				<label for="u_name" class="form-label">Name</label>
+				<input type="text" name="u_name" class="form-control" id="u_name" placeholder="Akin Niyi" required>
+			</div>
+			<div class="mb-3">
+				<label for="email" class="form-label">Email</label>
+				<input type="email" name="email" class="form-control" id="email" placeholder="name@example.com"required>
+			</div>
+			<div class="mb-3">
+				<label for="message" class="form-label">Message</label>
+				<textarea class="form-control bg-light" name="message" id="message" rows="4" required></textarea>
+			</div>
+			<button type="submit" class="btn btn-outline-light">Send</button>
+		</form>
+	</div>
+	
+</section>
+{% endblock%}
+
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/main/index.js') }}"></script>
+{% endblock %}

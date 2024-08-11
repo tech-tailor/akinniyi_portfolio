@@ -1,0 +1,169 @@
+
+
+#about {
+    margin-top: 70px;
+}
+
+.intro-cont {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto;
+    column-gap: 10px;
+    
+}
+.intro-details h1 {
+    font: 700 6rem 'Roboto', sans-serif;
+}
+
+.intro-details p {
+    font: 400 1rem/2 'Roboto', sans-serif;
+    color: #bdb8b8;  
+}
+
+.intro-img {
+    max-width: 100%;
+    border-radius: 5px;
+    height: auto;
+    align-self: center;
+}
+
+.cv-cont {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 30px;
+    column-gap: 50px;
+}
+
+.cv-cont p {
+    border: 1px solid #9c9b9b;
+    padding: 10px;
+}
+
+/* About me ...*/
+
+.aboutme-cont {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto;
+    column-gap: 10px;
+}
+
+.aboutme-img {
+    max-width: 100%;
+    border-radius: 5px;
+    height: auto;
+    align-self: center;
+}
+
+.aboutme-details h2 {
+    font: 700 2.5rem 'Roboto', sans-serif;   
+}
+
+#career {
+    display: none;
+}
+
+.aboutme-details p {
+    font: 400 1rem/2 'Roboto', sans-serif;
+    color: #bdb8b8;   
+}
+
+.edu-btns {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 30px;
+    column-gap: 50px;
+}
+
+.actives {
+    background-color: rgb(131, 128, 128);
+}
+.skills-cont {
+    margin-top: 50px;
+}
+
+.skills {
+    display: flex;
+    column-gap: 10px;
+    margin-top: 5px;
+}
+.skills-title {
+    font: 600 1.3rem 'Roboto', sans-serif;
+    color: #bdb8b8;
+    list-style: square
+}
+
+.skills p {
+    font: 500 1.2rem/1.5 'Roboto', sans-serif;
+}
+
+.edu, .cert {
+    margin-top: 50px;
+    font: 500 1.2rem/1.5 'Roboto', sans-serif;
+    color: #bdb8b8;  
+}
+
+.edu, .cert {
+    display: none;
+}
+
+/* Projects ...*/
+
+.myprojects {
+    margin-top: 60px;
+}
+
+.myprojects h2 {
+    font: 700 2.5rem 'Roboto', sans-serif;   
+}
+
+.project-cards {
+    margin-top: 30px;
+}
+.card-h5 {
+    font: 700 1.5rem 'Roboto', sans-serif;   
+}
+.card-p {
+    font: 400 1rem/2 'Roboto', sans-serif;  
+}
+.card-btn {
+    text-align: center;
+}
+
+/* Contact */
+.contact-cont {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    column-gap: 10px;
+}
+
+.contact-text h4 {
+    font: 700 2.5rem 'Roboto', sans-serif;
+
+}
+
+.contact-text p {
+    font: 400 1rem/2 'Roboto', sans-serif;
+    color: #bdb8b8; 
+}
+
+.contact-icons {
+    display: flex;
+    column-gap: 20px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.fa-brands {
+    font-size: 1.5em;
+}
+
+.greet {
+    font: 400 1.5rem/2 'Roboto', sans-serif;
+    color: #bdb8b8; 
+}

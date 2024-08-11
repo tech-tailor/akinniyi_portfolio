@@ -1,0 +1,53 @@
+---
+- name: Copy codebase to remote server
+  hosts: all
+  tasks:
+    - name: Create App directory
+      file:
+        path: "/home/{{ ansible_env.USER }}/akinniyi_portfolio/"
+        state: directory
+        owner: "{{ ansible_env.USER }}"
+        group: akinniyi_portfoliogroup
+        mode: "0777"
+
+    - name: Synchronize codebase to remote server
+      ansible.posix.synchronize:
+        dest: "/home/{{ ansible_env.USER }}/akinniyi_portfolio/"
+        src: /home/tech-server/akinniyi_portfolio/
+        owner: true
+        group: true
+        mode: push
+        checksum: true
+        rsync_opts:
+          - '--exclude=.git'
+          - '--exclude=.venv'
+          - '--exclude=.gitignore'
+          - '--exclude=__pycache__'
+          - '--exclude=run.py'
+          - '--exclude=akinniyi_portfolio.db'
+          
+      become: yes
+
+    - name: Change group ownership to 'akinniyi_portfoliogroup'
+      ansible.builtin.command:
+        cmd: chgrp -R akinniyi_portfoliogroup /home/{{ ansible_env.USER }}/akinniyi_portfolio/
+      become: yes
+
+    - name: Verify group ownership
+      command: ls -l /home/{{ ansible_env.USER }}/akinniyi_portfolio/
+      register: ls_output
+
+    - name: Display the group ownership
+      debug:
+        msg: "{{ ls_output.stdout_lines }}"
+
+    #- name: Change mode, owner and group for static files
+    #  ansible.builtin.file:
+    #    path: /home/{{ ansible_env.USER }}/akinniyi_portfolioss/frontend/static
+    #    mode: '0755'
+    #    owner: www-data
+    #    group: www-data
+    #    recurse: yes
+    #    state: directory
+    #  become: yes
+      

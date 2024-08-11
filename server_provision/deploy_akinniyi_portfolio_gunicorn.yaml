@@ -1,0 +1,79 @@
+---
+- name: Deploy akinniyi_portfolio with Gunicorn
+  hosts: neeyee_lab1
+  tasks:
+    - name: Install Gunicorn packages
+      ansible.builtin.pip:
+        name: gunicorn
+        executable: /home/{{ ansible_env.USER }}/akinniyi_portfolio/.venv/bin/pip3
+        state: latest 
+      become: yes
+
+    - name: Create gunicorn directory
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: gunicorn
+        group: gunicorn
+        mode: "0755"
+      loop:
+        - /var/log/gunicorn
+        - /var/run/gunicorn
+      become: true
+
+    # Create systemd service file for Gunicorn
+    - name: Create Gunicorn akinniyi_portfolio systemd service file
+      copy:
+        content: |
+          [Unit]
+          Description=Gunicorn Daemon for Akinniyi Portfolio
+          After=network.target
+        
+          [Service]
+          User=gunicorn
+          Group=akinniyi_portfoliogroup
+          WorkingDirectory=/home/{{ ansible_env.USER }}/akinniyi_portfolio
+          StandardOutput=journal
+          StandardError=journal
+          ExecStartPre=/bin/sudo /bin/mkdir -p /var/log/gunicorn /var/run/gunicorn
+          ExecStartPre=/bin/sudo /bin/chown -R gunicorn:gunicorn /var/log/gunicorn /var/run/gunicorn
+          ExecStartPre=/bin/sudo /bin/chmod -R 755 /var/log/gunicorn 
+          ExecStartPre=/bin/sudo /bin/chmod -R 755 /var/run/gunicorn
+          ExecStart=/home/{{ ansible_env.USER }}/akinniyi_portfolio/.venv/bin/gunicorn --config /home/{{ ansible_env.USER }}/akinniyi_portfolio/portfolio/akinniyi_portfolio_gunicorn_conf.py portfolio.app:app
+          ExecReload=/bin/kill -HUP $MAINPID
+          ExecStop=/usr/bin/kill -TERM $MAINPID
+
+          Restart=on-failure
+          TimeoutStartSec=15
+
+          [Install]
+          WantedBy=multi-user.target
+        dest: /etc/systemd/system/akinniyi_portfolio_gunicorn.service
+      become: true
+
+    # Reload systemd configuration to recognize the new service
+    - name: Reload systemd
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+      become: true
+
+    - name: Reload service gunicorn, in all cases
+      ansible.builtin.systemd_service:
+        name: akinniyi_portfolio_gunicorn
+        state: reloaded
+      become: true
+
+
+    # Enable Gunicorn service to start on boot
+    - name: Enable Gunicorn service
+      ansible.builtin.systemd_service:
+        name: akinniyi_portfolio_gunicorn.service
+        enabled: true
+      become: true
+
+
+    
+
+    
+
+    

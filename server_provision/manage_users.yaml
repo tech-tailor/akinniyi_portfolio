@@ -1,0 +1,30 @@
+- name: Manage users(fileowner, gunicorn, nginx) and permission
+  hosts: all
+  tasks:
+    - name: Ensure 'akinniyi_portfoliogroup' group exists
+      group:
+        name: akinniyi_portfoliogroup
+        state: present
+      become: yes
+
+
+    - name: Add the user running Ansible to akinniyi_portfoliogroup
+      user:
+        name: "{{ ansible_user }}"
+        groups: akinniyi_portfoliogroup
+        append: yes
+      become: yes
+
+    - name: Add user gunicorn to akinniyi_portfoliogroup
+      user:
+        name: gunicorn
+        groups: akinniyi_portfoliogroup
+        append: yes
+      become: yes
+
+    - name: Add the user nginx to akinniyi_portfoliogroup
+      user:
+        name: nginx
+        groups: akinniyi_portfoliogroup
+        append: yes
+      become: yes
